@@ -78,7 +78,7 @@ switch ($opcion) {
         escribirNormal("Ingresa tu nombre: ");
         $nombreUsuario = trim(fgets(STDIN));
         escribirNormal("Ingresa el número de la palabra con la que quieres jugar: ");
-        $indicePalabra = solicitarNumeroEntre(1, 10) - 1;
+        $indicePalabra = solicitarNumeroEntre(1, count($palabras)) - 1;
         $palabra = $palabras[$indicePalabra];
         $partida = jugarWordix($palabra, $nombreUsuario);
         array_push($partidas, $partida);
