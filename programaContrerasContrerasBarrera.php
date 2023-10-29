@@ -83,4 +83,12 @@ switch ($opcion) {
         $partida = jugarWordix($palabra, $nombreUsuario);
         array_push($partidas, $partida);
         break;
+    case 2:
+        escribirNormal("Ingresa tu nombre: ");
+        $nombreUsuario = trim(fgets(STDIN));
+        $indicePalabra = rand(1, count($palabras) - 1);
+        $palabra = $palabras[$indicePalabra];
+        $partida = jugarWordix($palabra, $nombreUsuario);
+        array_push($partidas, $partida);
+        break;
 }
