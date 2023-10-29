@@ -19,7 +19,8 @@ include_once("wordix.php");
  * Obtiene una colección de palabras
  * @return array
  */
-function cargarColeccionPalabras(){
+function cargarColeccionPalabras()
+{
     // array $coleccionPalabras
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
@@ -35,7 +36,8 @@ function cargarColeccionPalabras(){
  * Muestra el menú de opciones
  * @return int opción elegida
  */
-function seleccionarOpcion(){
+function seleccionarOpcion()
+{
     // int $numero
     escribirNormal("SELECIONE UNA OPCIÓN: \n");
     escribirNormal("1) Jugar al wordix con una palabra elegida\n");
@@ -46,7 +48,7 @@ function seleccionarOpcion(){
     escribirNormal("6) Mostrar listado de partidas ordenadas por jugador y por palabra\n");
     escribirNormal("7) Agregar una palabra de 5 letras a Wordix\n");
     escribirNormal("8) Salir\n");
-    $numero = solicitarNumeroEntre(1,8);
+    $numero = solicitarNumeroEntre(1, 8);
     return $numero;
 }
 
@@ -92,12 +94,12 @@ do {
             break;
         case 3:
             // int $numeroPartida, $indicePartida, $intentos, $puntaje array $partida, string $jugador
-            if (!empty($partidas)){
+            if (!empty($partidas)) {
                 escribirNormal("Ingrese el número de partida: ");
                 do {
                     $numeroPartida = solicitarNumeroEntre(0, count($palabras));
                     $indicePartida = $numeroPartida - 1;
-                    if (array_key_exists($indicePartida, $partidas)){
+                    if (array_key_exists($indicePartida, $partidas)) {
                         $partida = $partidas[$indicePartida];
                         $palabraWordix = $partida["palabraWordix"];
                         $jugador = $partida["jugador"];
@@ -106,10 +108,19 @@ do {
                         escribirNormal("Partida WORDIX $numeroPartida: palabra $palabraWordix\n");
                         escribirNormal("Jugador: $jugador\n");
                         escribirNormal("Puntaje: $puntaje puntos\n");
-                        escribirNormal("Intento: $intentos\n");
+                        switch ($intentos) {
+                            case 0:
+                                escribirNormal("Intento: no adivinó la palabra\n");
+                                break;
+                            case 1:
+                                escribirNormal("Intento: adivinó la palabra en $intentos intento\n");
+                                break;
+                            default:
+                                escribirNormal("Intento: adivinó la palabra en $intentos intentos\n");
+                        }
                         escribirNormal("Ingrese otro número de partida para obtener sus datos. Para volver al menú principal presione 0\n");
                     } else {
-                        if ($numeroPartida != 0){
+                        if ($numeroPartida != 0) {
                             escribirNormal("El número de partida no existe. Ingrese un número de partida válido.\n");
                             escribirNormal("Ingrese 0 para volver al menú principal.\n");
                         }
@@ -118,6 +129,9 @@ do {
             } else {
                 escribirNormal("\nAún no se han jugado partidas.\nJuega una partida para poder ver su resultado.\n\n");
             }
+            break;
+        case 4:
+            //
             break;
     }
 } while ($opcion != 8);
