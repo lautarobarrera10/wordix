@@ -27,7 +27,10 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ * Solicita un número entre un rango. En caso de ingresar un número fuera del rango, vuelve a solicitarlo hasta que ingrese uno dentro del rango.
+ * @param int $min
+ * @param int $max
+ * @return int numero ingresado
  */
 function solicitarNumeroEntre($min, $max)
 {
