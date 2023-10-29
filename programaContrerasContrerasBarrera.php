@@ -68,27 +68,56 @@ $partidas = [];
 
 //Proceso:
 
-//print_r($partida);
-// imprimirResultado($partida);
-
-$opcion = seleccionarOpcion();
-switch ($opcion) {
-    case 1:
-        // string $nombreUsuario $palabra, int $indicePalabra, array $partida
-        escribirNormal("Ingresa tu nombre: ");
-        $nombreUsuario = trim(fgets(STDIN));
-        escribirNormal("Ingresa el número de la palabra con la que quieres jugar: ");
-        $indicePalabra = solicitarNumeroEntre(1, count($palabras)) - 1;
-        $palabra = $palabras[$indicePalabra];
-        $partida = jugarWordix($palabra, $nombreUsuario);
-        array_push($partidas, $partida);
-        break;
-    case 2:
-        escribirNormal("Ingresa tu nombre: ");
-        $nombreUsuario = trim(fgets(STDIN));
-        $indicePalabra = rand(1, count($palabras) - 1);
-        $palabra = $palabras[$indicePalabra];
-        $partida = jugarWordix($palabra, $nombreUsuario);
-        array_push($partidas, $partida);
-        break;
-}
+do {
+    $opcion = seleccionarOpcion();
+    switch ($opcion) {
+        case 1:
+            // string $nombreUsuario $palabra, int $indicePalabra, array $partida
+            escribirNormal("Ingresa tu nombre: ");
+            $nombreUsuario = trim(fgets(STDIN));
+            escribirNormal("Ingresa el número de la palabra con la que quieres jugar: ");
+            $indicePalabra = solicitarNumeroEntre(1, count($palabras)) - 1;
+            $palabra = $palabras[$indicePalabra];
+            $partida = jugarWordix($palabra, $nombreUsuario);
+            array_push($partidas, $partida);
+            break;
+        case 2:
+            // string $nombreUsuario $palabra, int $indicePalabra, array $partida
+            escribirNormal("Ingresa tu nombre: ");
+            $nombreUsuario = trim(fgets(STDIN));
+            $indicePalabra = rand(1, count($palabras) - 1);
+            $palabra = $palabras[$indicePalabra];
+            $partida = jugarWordix($palabra, $nombreUsuario);
+            array_push($partidas, $partida);
+            break;
+        case 3:
+            // int $numeroPartida, $indicePartida, $intentos, $puntaje array $partida, string $jugador
+            if (!empty($partidas)){
+                escribirNormal("Ingrese el número de partida: ");
+                do {
+                    $numeroPartida = solicitarNumeroEntre(0, count($palabras));
+                    $indicePartida = $numeroPartida - 1;
+                    if (array_key_exists($indicePartida, $partidas)){
+                        $partida = $partidas[$indicePartida];
+                        $palabraWordix = $partida["palabraWordix"];
+                        $jugador = $partida["jugador"];
+                        $intentos = $partida["intentos"];
+                        $puntaje = $partida["puntaje"];
+                        escribirNormal("Partida WORDIX $numeroPartida: palabra $palabraWordix\n");
+                        escribirNormal("Jugador: $jugador\n");
+                        escribirNormal("Puntaje: $puntaje puntos\n");
+                        escribirNormal("Intento: $intentos\n");
+                        escribirNormal("Ingrese otro número de partida para obtener sus datos. Para volver al menú principal presione 0\n");
+                    } else {
+                        if ($numeroPartida != 0){
+                            escribirNormal("El número de partida no existe. Ingrese un número de partida válido.\n");
+                            escribirNormal("Ingrese 0 para volver al menú principal.\n");
+                        }
+                    }
+                } while ($numeroPartida != 0);
+            } else {
+                escribirNormal("\nAún no se han jugado partidas.\nJuega una partida para poder ver su resultado.\n\n");
+            }
+            break;
+    }
+} while ($opcion != 8);
