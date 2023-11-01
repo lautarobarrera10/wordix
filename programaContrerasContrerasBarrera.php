@@ -3,7 +3,9 @@ include_once("wordix.php");
 require "menu/selectorOpciones.php";
 require "funciones/resumenJugador.php";
 require "funciones/primeraPartidaGanadora.php";
-
+require "funciones/ordenarColeccionPartidas.php";
+require "menu/agregarPalabra.php"; 
+require "funciones/nombreMinuscula.php";
 /**************************************/
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
@@ -54,8 +56,7 @@ do {
     switch ($opcion) {
         case 1:
             // string $nombreUsuario $palabra, int $indicePalabra, array $partida
-            escribirNormal("Ingresa tu nombre: ");
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario=solicitarJugador();
             escribirNormal("Ingresa el número de la palabra con la que quieres jugar: ");
             $indicePalabra = solicitarNumeroEntre(1, count($palabras)) - 1;
             $palabra = $palabras[$indicePalabra];
@@ -64,8 +65,8 @@ do {
             break;
         case 2:
             // string $nombreUsuario $palabra, int $indicePalabra, array $partida
-            escribirNormal("Ingresa tu nombre: ");
-            $nombreUsuario = trim(fgets(STDIN));
+            // 
+            $nombreUsuario=solicitarJugador();
             $indicePalabra = rand(1, count($palabras) - 1);
             $palabra = $palabras[$indicePalabra];
             $partida = jugarWordix($palabra, $nombreUsuario);
@@ -143,6 +144,9 @@ do {
                     }
                 }
             }
-            break;    
+            break;   
+            case 7:
+                $palabras = agregarPalabra($palabras);
+                // print_r($palabras);
     }
 } while ($opcion != 8);
