@@ -30,5 +30,3 @@ function ordenDeColeccion($partidas)
     print_r($partidas);
 }
 
-/**ordenDeColeccion va en el otro archivo ,pero no supiste donde llamar a la funcion   */
-//ordenDeColeccion($partidas);
