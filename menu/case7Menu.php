@@ -8,17 +8,31 @@
 
 function agregarPalabra($coleccionPalabras)
 {
-    // print_r($coleccionPalabras);
+    $palabraAgregada = false;
+    $salir = false;
+    $nuevaColeccion = $coleccionPalabras;
 
-    echo "ingrese palabra de 5 letras (solo se permiten letras)\n";
-    $palabraGuardar = trim(fgets(STDIN));
-    $palabraGuardar = strtoupper($palabraGuardar);
-    /**este if verifica que la palabra tenga 5 letras y
-         de ser asi pasa la palabra a mayusculas y lo guarda en el arreglo */
-    if (strlen($palabraGuardar) == 5 && ctype_alpha($palabraGuardar) && !in_array($palabraGuardar, $coleccionPalabras)) {
-        array_push($coleccionPalabras, $palabraGuardar);
-    } else {
-        echo "su palabra no se guardó , seguro tenia un caracter extraño o mas de 5 letras. ";
-    }
-    return ($coleccionPalabras);
+    do {
+        echo "\nPresiona 0 para salir.\n";
+        echo "Ingrese una palabra de 5 letras.\n";
+        $palabraGuardar = strtoupper(trim(fgets(STDIN)));
+        if ($palabraGuardar == 0){
+            $salir = true;
+        }
+        else if (strlen($palabraGuardar) != 5){
+            echo "\n❌ Debe ingresar una palabra de 5 letras.\n\n";
+        }
+        else if (!ctype_alpha($palabraGuardar)){
+            echo "\n❌ La palabra sólo puede tener letras.\n\n";
+        }
+        else if (in_array($palabraGuardar, $coleccionPalabras)){
+            echo "\n❌ Esa palabra ya existe. Ingresa otra palabra. \n\n";
+        }
+        else {
+            array_push($nuevaColeccion, $palabraGuardar);
+            $palabraAgregada = true;
+            echo "\n✅ Palabra agregada\n\n";
+        }
+    } while (!$palabraAgregada && !$salir);
+    return $nuevaColeccion;
 }
