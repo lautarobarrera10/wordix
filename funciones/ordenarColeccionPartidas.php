@@ -27,6 +27,10 @@ function ordenar($a, $b)
 function ordenDeColeccion($partidas)
 {
     uasort($partidas, 'ordenar');
-    print_r($partidas);
+    if(!empty($partidas)){
+        print_r($partidas);
+    } else {
+        escribirNormal("Aún no se han jugado partidas.\n");
+    }
 }
 

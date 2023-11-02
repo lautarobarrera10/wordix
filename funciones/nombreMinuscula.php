@@ -19,7 +19,6 @@ function solicitarJugador(){
             $nombreJugador = trim(fgets(STDIN));
         }
     } while ($valido!= true);
-    echo $nombreJugador;
     return $nombreJugador;
 }
 

@@ -38,13 +38,17 @@
             }
         }
     }
-    $porcentajeVictorias = ($victorias / $cantPartidas) * 100 ;
-    return [
-        "jugador" => $jugador,
-        "partidas" => $cantPartidas,
-        "puntajeTotal" => $puntajeTotal,
-        "victorias" => $victorias,
-        "porcentajeVictorias" => $porcentajeVictorias,
-        "adivinadas" => $adivinadas
-    ];
+    if ($cantPartidas != 0){
+        $porcentajeVictorias = ($victorias / $cantPartidas) * 100 ;
+        return [
+            "jugador" => $jugador,
+            "partidas" => $cantPartidas,
+            "puntajeTotal" => $puntajeTotal,
+            "victorias" => $victorias,
+            "porcentajeVictorias" => $porcentajeVictorias,
+            "adivinadas" => $adivinadas
+        ];
+    } else {
+        return false;
+    }
  }
