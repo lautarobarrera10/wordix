@@ -24,7 +24,7 @@ function ordenar($a, $b)
  * @param array $partidas 
     **/
 
-function ordenDeColeccion($partidas)
+function imprimirColeccionDePartidasOrdenadas($partidas)
 {
     uasort($partidas, 'ordenar');
     if(!empty($partidas)){
@@ -33,4 +33,3 @@ function ordenDeColeccion($partidas)
         escribirNormal("Aún no se han jugado partidas.\n");
     }
 }
-

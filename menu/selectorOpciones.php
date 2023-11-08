@@ -6,7 +6,7 @@
 function seleccionarOpcion()
 {
     // int $numero
-    escribirNormal("SELECIONE UNA OPCIÓN: \n");
+    escribirNormal("\nSELECIONE UNA OPCIÓN: \n");
     escribirNormal("1) Jugar al wordix con una palabra elegida\n");
     escribirNormal("2) Jugar al wordix con una palabra aleatoria\n");
     escribirNormal("3) Mostrar una partida\n");
