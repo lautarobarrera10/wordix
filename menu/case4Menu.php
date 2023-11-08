@@ -5,6 +5,7 @@ function partidaGanadora($partidas)
     $nombreUsuario = solicitarJugador();
     $i = 0;
     $victoriaUsuario = 0;
+    $hayPartida = null;
     while (count($partidas) > $i) {
         if ($nombreUsuario === $partidas[$i]["jugador"] && $partidas[$i]["puntaje"] > 0) {
             $victoriaUsuario = 1;

@@ -8,11 +8,11 @@
 function mostrarPartida($palabras , $partidas)
 {
     if (!empty($partidas)) {
-        escribirNormal("actualmente hay " . count($partidas) . " partida/s \n");
+        escribirNormal("actualmente hay " . count($palabras) . " partida/s \n");
         escribirNormal("Ingrese el número de partida: ");
         do {
-            $numeroPartida = solicitarNumeroEntre(0, count($palabras));
-            $indicePartida = $numeroPartida - 1;
+            $numeroPartida = solicitarNumeroEntre(0, count($partidas));
+            $indicePartida = $numeroPartida -1;
             if (array_key_exists($indicePartida, $partidas)) {
                 $partida = $partidas[$indicePartida];
                 $palabraWordix = $partida["palabraWordix"];
@@ -34,10 +34,9 @@ function mostrarPartida($palabras , $partidas)
                 }
                 escribirNormal("Ingrese otro número de partida para obtener sus datos. Para volver al menú principal presione 0\n");
             } else {
-                if ($numeroPartida != 0) {
                     escribirNormal("El número de partida no existe. Ingrese un número de partida válido.\n");
                     escribirNormal("Ingrese 0 para volver al menú principal.\n");
-                }
+                
             }
         } while ($numeroPartida != 0);
     } else {
