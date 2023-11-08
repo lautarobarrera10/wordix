@@ -41,6 +41,25 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+/**
+ * Obtiene una colección de partidas
+ * @return array
+ */
+function cargarColeccionPartidas()
+{
+    // array $coleccionPartidas
+    $coleccionPartidas = [
+        [
+            "palabraWordix" => "MUJER",
+            "jugador" => "Lautaro",
+            "intentos" => 1,
+            "puntaje" => 13
+        ],
+    ];
+
+    return ($coleccionPartidas);
+}
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
@@ -53,7 +72,7 @@ $opcion; // int
 
 //Inicialización de variables:
 $palabras = cargarColeccionPalabras();
-$partidas = [];
+$partidas = cargarColeccionPartidas();
 
 //Proceso:
 
@@ -67,7 +86,7 @@ do {
             palabraRandom($palabras, $partidas);
             break;
         case 3:
-            $partidas=mostrarPartida($palabras, $partidas);
+            mostrarPartida($partidas);
             break;
         case 4:
             partidaGanadora($partidas);
