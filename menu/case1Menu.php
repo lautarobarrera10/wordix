@@ -7,42 +7,43 @@
  * @return array nueva colección de partidas */
 function seleccionPalabra($palabras, $partidas)
 {
-    // string $nombreUsuario $palabra, int $indicePalabra, array $partida
-    $indicesRepetidos = [];
+    // string $nombreUsuario $palabra, int $indicePalabra, array $partida, $palabrasJugadas, boolean $palabraRepetida, $jugoTodas
+    $palabrasJugadas = [];
     $palabraRepetida = false;
     $jugoTodas = false;
     $nombreUsuario = solicitarJugador();
-    do {
-        escribirNormal("\nIngresa el número de la palabra con la que quieres jugar: ");
-        $indicePalabra = solicitarNumeroEntre(0, count($palabras)) - 1;
-        if ($indicePalabra != -1){
-            for ($i=0; $i < count($partidas); $i++) { 
-                foreach ($partidas[$i] as $clave => $valor) {
-                    if($clave == "jugador" && $valor == $nombreUsuario && $partidas[$i]["palabraWordix"] == $palabras[$indicePalabra]){
-                        array_push($indicesRepetidos, $indicePalabra);
-                    }
-                }
+    for ($i = 0; $i < count($partidas); $i++) {
+        foreach ($partidas[$i] as $clave => $valor) {
+            if ($clave == "jugador" && $valor == $nombreUsuario) {
+                array_push($palabrasJugadas, $partidas[$i]["palabraWordix"]);
             }
-            print_r($indicesRepetidos);
-            print_r($palabras);
-            if (count($indicesRepetidos) == count($palabras)){
-                echo "\nEste jugador ya jugó con todas las palabras.\n";
-                $jugoTodas = true;
-            } else {
-                if (in_array($indicePalabra, $indicesRepetidos)){
+        }
+    }
+    do {
+        if (count($palabrasJugadas) == count($palabras)) {
+            echo "\n❌ Este jugador ya jugó con todas las palabras. Ingresa otro nombre.\n";
+            $jugoTodas = true;
+        } else {
+            escribirNormal("\nIngresa el número de la palabra con la que quieres jugar. \nIngresa 0 para salir.\n");
+            $indicePalabra = solicitarNumeroEntre(0, count($palabras)) - 1;
+            if ($indicePalabra != -1){
+                $palabra = $palabras[$indicePalabra];
+                if (in_array($palabra, $palabrasJugadas)) {
                     $palabraRepetida = true;
                 } else {
                     $palabraRepetida = false;
                 }
-                if ($palabraRepetida){
-                    echo "Ya jugó con esa palabra, seleccione otra.";
+                if ($palabraRepetida) {
+                    echo "\n❗ Ya jugó con esa palabra, seleccione otra.\n";
                 } else {
-                    $palabra = $palabras[$indicePalabra];
                     $partida = jugarWordix($palabra, $nombreUsuario);
                     array_push($partidas, $partida);
                 }
             }
         }
     } while ($palabraRepetida && $indicePalabra != -1 && !$jugoTodas);
+    if ($jugoTodas) {
+        $partidas = seleccionPalabra($palabras, $partidas);
+    }
     return $partidas;
 }

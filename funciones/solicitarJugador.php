@@ -2,7 +2,7 @@
 /**ESTA FUNCION CAMBIA UN NOMBRE A MINUSCULA Y NO PERMITE CARACTERES EXTRANOS AL INICIO DEL NOMBRE  */
 function solicitarJugador(){
     $valido=false;
-    echo "ingrese su nombre (no se permiten caracteres extraños) \n";
+    echo "Ingrese su nombre:\n";
     $nombreJugador=trim(fgets(STDIN));
     
     do {
@@ -15,7 +15,7 @@ function solicitarJugador(){
             $nombreJugador = mb_strtolower($nombreJugador);
         } else {
             $valido = false;
-            echo "Ingrese su nombre (no se permiten caracteres extraños) \n";
+            echo "Ingrese su nombre (no se permiten caracteres extraños): \n";
             $nombreJugador = trim(fgets(STDIN));
         }
     } while ($valido!= true);
