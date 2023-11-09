@@ -85,7 +85,6 @@ function cargarColeccionPartidas()
 //Declaración de variables:
 $palabras; // array
 $partidas; // array
-$partida; // array
 $opcion; // int
 
 //Inicialización de variables:

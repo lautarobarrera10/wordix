@@ -8,7 +8,6 @@
 
 function ordenar($a, $b)
 {
-
     if ($a["jugador"] == $b["jugador"]) {
         return strcmp($a["palabraWordix"], $b["palabraWordix"]);
     } elseif ($a["jugador"] < $b["jugador"]) {

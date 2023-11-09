@@ -43,10 +43,12 @@ function mostrarPartida($partidas)
         escribirNormal("Ingrese el número de partida: ");
         do {
             $numeroPartida = solicitarNumeroEntre(0, count($partidas));
-            $indicePartida = $numeroPartida -1;
-            $partida = $partidas[$indicePartida];
-            imprimirPartida($partida, $numeroPartida);
-            escribirNormal("\nIngrese otro número de partida para obtener sus datos.\nPara volver al menú principal presione 0\n");
+            if ($numeroPartida != 0){
+                $indicePartida = $numeroPartida -1;
+                $partida = $partidas[$indicePartida];
+                imprimirPartida($partida, $numeroPartida);
+                escribirNormal("\nIngrese otro número de partida para obtener sus datos.\nPara volver al menú principal presione 0\n");
+            }
         } while ($numeroPartida != 0);
     } else {
         escribirNormal("\nAún no se han jugado partidas.\nJuega una partida para poder ver su resultado.\n\n");
