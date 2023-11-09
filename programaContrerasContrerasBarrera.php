@@ -33,9 +33,9 @@ function cargarColeccionPalabras()
     // array $coleccionPalabras
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
-        "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
-        "PERRO", "PADRE", "MADRE", "PRIMO", "CALOR"
+        // "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
+        // "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
+        // "PERRO", "PADRE", "MADRE", "PRIMO", "CALOR"
     ];
 
     return ($coleccionPalabras);
@@ -64,6 +64,12 @@ function cargarColeccionPartidas()
         [
             "palabraWordix" => "CASAS",
             "jugador" => "gabi",
+            "intentos" => 2,
+            "puntaje" => 15
+        ],
+        [
+            "palabraWordix" => "CASAS",
+            "jugador" => "lautaro",
             "intentos" => 2,
             "puntaje" => 15
         ],
@@ -100,7 +106,7 @@ do {
             $partidas = seleccionPalabra($palabras, $partidas);
             break;
         case 2:
-            palabraRandom($palabras, $partidas);
+            $partidas = palabraRandom($palabras, $partidas);
             break;
         case 3:
             mostrarPartida($partidas);
