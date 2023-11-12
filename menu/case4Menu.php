@@ -1,35 +1,52 @@
 <?php
-//muestra la primera partida ganadora
-function partidaGanadora($partidas)
+
+/**
+ * Filtra las partidas de un jugador
+ * @param array $partidas
+ * @param string $jugador
+ * @return array partidas del jugador
+ */
+function filtrarPartidasJugador($partidas, $jugador)
 {
-    $nombreUsuario = solicitarJugador();
-    $i = 0;
-    $victoriaUsuario = 0;
-    $hayPartida = null;
-    while (count($partidas) > $i) {
-        if ($nombreUsuario === $partidas[$i]["jugador"] && $partidas[$i]["puntaje"] > 0) {
-            $victoriaUsuario = 1;
-            $hayPartida = $partidas[$i]["jugador"];
-        } else if ($nombreUsuario === $partidas[$i]["jugador"]) {
-            $hayPartida = $partidas[$i]["jugador"];
+    // array $partidasJugador
+    $partidasJugador = [];
+    for ($i = 0; $i < count($partidas); $i++) {
+        if ($partidas[$i]["jugador"] == $jugador) {
+            array_push($partidasJugador, $partidas[$i]);
         }
-        $i++;
     }
-    if (!empty($partidas) && $nombreUsuario == $hayPartida) {
-        $partidaGanada = primeraPartidaGanada($partidas);
-        if (!empty($partidaGanada) && $victoriaUsuario === 1) {
-            $palabraWordix = $partidaGanada["palabraWordix"];
-            $jugador = $partidaGanada["jugador"];
-            $intentos = $partidaGanada["intentos"];
-            $puntaje = $partidaGanada["puntaje"];
-            $numeroPartida = $partidaGanada["nroPartida"];
-            escribirNormal("Partida WORDIX $numeroPartida: palabra $palabraWordix\n");
-            escribirNormal("Jugador: $jugador\n");
-            escribirNormal("Puntaje: $puntaje puntos\n");
-        } else if ($victoriaUsuario == 0) {
-            escribirNormal("no han ganado ninguna partida");
+    return $partidasJugador;
+}
+
+/** Encuentra la primer partida ganadora de un jugador y la imprime
+ * @param array $partidas
+ * @return null
+ */
+
+function primeraPartidaGanada($partidas)
+{
+    // string $nombreUsuario, array $partidasJugador $partidaGanadora, int $cantPartidas, boolean $hayGanadora
+    $nombreUsuario = solicitarJugador();
+    $partidasJugador = filtrarPartidasJugador($partidas, $nombreUsuario);
+    $cantPartidas = 0;
+    $hayGanadora = false;
+    $partidaGanadora = [];
+    while (count($partidasJugador) !== $cantPartidas && !$hayGanadora) {
+        if ($partidasJugador[$cantPartidas]["puntaje"] > 0) {
+            $hayGanadora = true;
+            $partidaGanadora = [
+                "palabraWordix" => $partidasJugador[$cantPartidas]["palabraWordix"],
+                "jugador" => $partidasJugador[$cantPartidas]["jugador"],
+                "intentos" => $partidasJugador[$cantPartidas]["intentos"],
+                "puntaje" => $partidasJugador[$cantPartidas]["puntaje"],
+                "nroPartida" => $cantPartidas + 1
+            ];
         }
+        $cantPartidas++;
+    }
+    if ($partidaGanadora) {
+        print_r($partidaGanadora);
     } else {
-        escribirNormal("\nAún no se han jugado partidas.\nJuega una partida para poder ver la primera partida ganada.\n\n");
+        echo "\n❗ El jugador ingresado no tiene nignuna partida ganada.\n";
     }
 }

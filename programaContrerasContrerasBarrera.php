@@ -1,8 +1,6 @@
 <?php
 include_once("wordix.php");
 require "menu/selectorOpciones.php";
-require "funciones/resumenJugador.php";
-require "funciones/primeraPartidaGanadora.php";
 require "funciones/solicitarJugador.php";
 require "menu/case1Menu.php";
 require "menu/case2Menu.php";
@@ -62,6 +60,12 @@ function cargarColeccionPartidas()
             "puntaje" => 15
         ],
         [
+            "palabraWordix" => "FUEGO",
+            "jugador" => "gabi",
+            "intentos" => 2,
+            "puntaje" => 12
+        ],
+        [
             "palabraWordix" => "CASAS",
             "jugador" => "gabi",
             "intentos" => 2,
@@ -112,10 +116,10 @@ do {
             mostrarPartida($partidas);
             break;
         case 4:
-            partidaGanadora($partidas);
+            primeraPartidaGanada($partidas);
             break;
         case 5:
-            resumJugador($partidas);
+            imprimirResumenJugador($partidas);
             break;
         case 6:
             imprimirColeccionDePartidasOrdenadas($partidas);
