@@ -3,12 +3,14 @@
 /** Esta funcion ordena alfabeticamente primero por nombres y si sus nombres son iguales se ordena
  *  por palabraWordixs 
  * 
- * @param array $a $b 
- * @return Entero (puede retornar 0 ,-1 ó 1)
+ * @param array $a
+ * @param array $b
+ * @return int (puede retornar 0 ,-1 ó 1)
  */
 
 function ordenar($a, $b)
 {
+    // int $resultado
     if ($a["jugador"] == $b["jugador"]) {
         return strcmp($a["palabraWordix"], $b["palabraWordix"]);
     } elseif ($a["jugador"] < $b["jugador"]) {
@@ -19,11 +21,10 @@ function ordenar($a, $b)
     return $resultado;
 }
 
-/** el uasort recibe el retorno de la funcion ordenar y ordena las 
+/** El uasort recibe el retorno de la funcion ordenar y ordena las 
  * palabras acorde al entero retornado (0,1 ó 1 ) y tambien imprime el arreglo con print_r
  * @param array $partidas 
- **/
-
+ */
 function imprimirColeccionDePartidasOrdenadas($partidas)
 {
     uasort($partidas, 'ordenar');

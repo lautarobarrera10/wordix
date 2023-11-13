@@ -3,11 +3,12 @@
 /** Esta funcion le pide al usuario ingresar una palabra de 5 letras ,
  *  la pasa a mayusculas y la guarda en el arreglo de palabras si esta bien ingresada la palabra 
  * @param array $coleccionPalabras 
- * @return array $coleccionPalabras
+ * @return array $nuevaColeccion
  */
 
 function agregarPalabra($coleccionPalabras)
 {
+    // boolean $palabraAgregada, $salir, array $nuevaColeccion, string $palabraGuardar
     $palabraAgregada = false;
     $salir = false;
     $nuevaColeccion = $coleccionPalabras;

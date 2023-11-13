@@ -8,24 +8,24 @@
  */
 function palabraRandom($palabras, $partidas)
 {
-    // string $nombreUsuario $palabra $palabraUsada, int $indicePalabra, array $partida $palabrasUsadas
+    // string $nombreUsuario $palabra $palabraJugada, int $indicePalabra, array $partida $palabrasJugadas
     $nombreUsuario = solicitarJugador();
-    $palabrasUsadas = [];
+    $palabrasJugadas = [];
     for ($i = 0; $i < count($partidas); $i++) {
         foreach ($partidas[$i] as $clave => $valor) {
             if ($clave == "jugador" && $valor == $nombreUsuario) {
-                $palabraUsada = $partidas[$i]["palabraWordix"];
-                array_push($palabrasUsadas, $palabraUsada);
+                $palabraJugada = $partidas[$i]["palabraWordix"];
+                array_push($palabrasJugadas, $palabraJugada);
             }
         }
     }
-    if (count($palabrasUsadas) == count($palabras)) {
+    if (count($palabrasJugadas) == count($palabras)) {
         echo "\n❗ Este jugador ya jugó con todas las palabras\n";
     } else {
         do {
             $indicePalabra = rand(1, count($palabras) - 1);
             $palabra = $palabras[$indicePalabra];
-        } while (in_array($palabra, $palabrasUsadas));
+        } while (in_array($palabra, $palabrasJugadas));
         $partida = jugarWordix($palabra, $nombreUsuario);
         array_push($partidas, $partida);
     }
