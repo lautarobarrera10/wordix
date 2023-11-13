@@ -1,7 +1,8 @@
 <?php
 
-/** Ordena alfabeticamente primero con nombres y despues palabraWordixs 
- * en orden el arreglo colecciones  de partidas con uasort
+/** Esta funcion ordena alfabeticamente primero por nombres y si sus nombres son iguales se ordena
+ *  por palabraWordixs 
+ * 
  * @param array $a
  * @param array $b
  * @return int (puede retornar 0 ,-1 ó 1)
@@ -27,7 +28,7 @@ function ordenar($a, $b)
 function imprimirColeccionDePartidasOrdenadas($partidas)
 {
     uasort($partidas, 'ordenar');
-    if(!empty($partidas)){
+    if (!empty($partidas)) {
         print_r($partidas);
     } else {
         escribirNormal("Aún no se han jugado partidas.\n");
