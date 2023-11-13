@@ -7,8 +7,7 @@
  * @return null
  */
 function imprimirPartida($partida, $numeroPartida){
-    /* strin $palabraWordix, $jugador
-    int $intentos, $puntaje */
+    // string $palabraWordix, $jugador,int $intentos, $puntaje
     $palabraWordix = $partida["palabraWordix"];
     $jugador = $partida["jugador"];
     $intentos = $partida["intentos"];
