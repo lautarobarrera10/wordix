@@ -1,6 +1,6 @@
 <?php
 
-/**esta funcion le pide al usuario ingresar una palabra de 5 letras ,
+/** Esta funcion le pide al usuario ingresar una palabra de 5 letras ,
  *  la pasa a mayusculas y la guarda en el arreglo de palabras si esta bien ingresada la palabra 
  * @param array $coleccionPalabras 
  * @return array $coleccionPalabras

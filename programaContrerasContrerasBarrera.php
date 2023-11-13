@@ -61,13 +61,13 @@ function cargarColeccionPartidas()
         ],
         [
             "palabraWordix" => "FUEGO",
-            "jugador" => "gabi",
+            "jugador" => "gaby",
             "intentos" => 2,
             "puntaje" => 12
         ],
         [
             "palabraWordix" => "CASAS",
-            "jugador" => "gabi",
+            "jugador" => "gaby",
             "intentos" => 2,
             "puntaje" => 15
         ],
