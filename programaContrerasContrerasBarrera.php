@@ -35,7 +35,8 @@ function cargarColeccionPalabras()
         // "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         // "PERRO", "PADRE", "MADRE", "PRIMO", "CALOR"
     ];
-
+    // el resto de las palabras estan comentadas para poder hacer un ejemplo de 
+    // cuando un jugador haya jugado todas las palabras y no lo deje seguir
     return ($coleccionPalabras);
 }
 
