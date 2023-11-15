@@ -12,7 +12,7 @@ function solicitarJugador(){
          *  el ciclo termina cuando inicican bien el nombre  */
         if (ctype_alpha($nombreJugador[0])) {
             $valido = true;
-            $nombreJugador = mb_strtolower($nombreJugador);
+            $nombreJugador = strtolower($nombreJugador);
         } else {
             $valido = false;
             echo "Ingrese su nombre (no se permiten caracteres extraños): \n";
