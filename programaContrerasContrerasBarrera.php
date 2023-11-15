@@ -14,8 +14,10 @@ require "menu/case7Menu.php";
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-/* Barrera Lautaro FAI-4801 TUDW lautarobarrera12@gmail.com lautarobarrera10 */
+/* Apellido y Nombre   | Legajo   | Carrera | mail                       | Usuario Github */
+/* Barrera Lautaro     | FAI-4801 | TUDW    | lautarobarrera12@gmail.com | lautarobarrera10 */
+/* Contreras Katherine | FAI-4996 | TUDW    | kathijcs@gmail.com         | katherine-j-c-s0 */
+/* Contreras Gabriela  | FAI-4480 | TUDW    | gcontreras8522@gmail.com   | Gabriela-contreras */
 
 
 /**************************************/
